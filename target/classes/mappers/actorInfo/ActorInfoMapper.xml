@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.indieground.movie.actorInfo.repository.IActorInfoMapper">
+
+	<!-- ResultMap 선언 -->
+	<resultMap id="ActorInfoMap" type="com.indieground.movie.actorInfo.model.ActorInfoVO">
+		<id property="moviecode" column="moviecode" />
+		<result property="sn" column="sn" />
+		<result property="actor" column="actor" />
+		<result property="profile" column="profile" />
+		<result property="photolink" column="photolink" />
+		<result property="genger" column="genger"/>
+		<result property="age" column="age"/>
+		<result property="contury" column="contury"/>
+		<result property="directorat" column="directorat"/>
+	</resultMap>
+
+</mapper>

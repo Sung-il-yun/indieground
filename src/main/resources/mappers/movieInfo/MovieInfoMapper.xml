@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.indieground.movie.movieInfo.repository.IMovieInfoMapper">
+	
+		<!-- ResultMap 선언 -->
+	<resultMap id="MovieInfoMap" type="com.indieground.movie.movieInfo.model.MovieInfoVO">
+		<id property="moviecode" column="moviecode" />
+		<result property="sn" column="sn" />
+		<result property="movienm" column="movienm" />
+		<result property="movienmeng" column="movienmeng" />
+		<result property="pdyear" column="pdyear" />
+		<result property="pdcountry" column="pdcountry" />
+		<result property="director" column="director" />
+		<result property="casting" column="casting" />
+		<result property="pdcompany" column="pdcompany" />
+		<result property="relsedate" column="relsedate" />
+		<result property="movieposter" column="movieposter" />
+		<result property="score" column="score" />
+		<result property="plot" column="plot" />
+		<result property="registdt" column="registdt" />
+		<result property="updtdt" column="updtdt" />
+		<result property="genre" column="genre" />
+		<result property="pdstatus" column="pdstatus" />
+	</resultMap>
+	
+	
+	<!-- 데이터 가져오기 테스트 -->
+	<select id="test" resultMap="MovieInfoMap">
+		SELECT * FROM movieinfo ORDER BY sn ASC
+	</select>
+	
+	<!-- default 값이 없기 때문에 sysdate를 직접 입력한다. -->
+	<insert id="insert">
+		INSERT INTO movieinfo
+		VALUES(movieinfo_SEQ.NEXTVAL, #{movienm}, #{movienmeng}, #{moviecode}, #{pdyear}, #{pdcountry}, #{director}, #{casting}, #{pdcompany}, #{relsedate}, #{movieposter}, #{score}, #{plot}, sysdate, sysdate, #{genre}, #{pdstatus})
+	</insert>
+	
+	
+	
+</mapper>

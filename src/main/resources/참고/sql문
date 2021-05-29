@@ -1,0 +1,463 @@
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- movieInfo Table Create SQL
+CREATE TABLE movieInfo
+(
+    sn             INT             NOT NULL, 
+    movieNm        VARCHAR(30)     NOT NULL, 
+    movieNmEng     VARCHAR(40)     NOT NULL, 
+    movieCode      VARCHAR(20)     primary key  NOT NULL, 
+    pdYear         DATE            NULL, 
+    pdCountry      VARCHAR(20)     NULL, 
+    director       VARCHAR(40)     NULL, 
+    casting        VARCHAR(200)    NULL, 
+    pdCompany      VARCHAR(20)     NULL, 
+    relseDate      DATE            NULL, 
+    moviePoster    VARCHAR(20)     NULL, 
+    score          FLOAT           NULL, 
+    plot           VARCHAR(500)    NULL, 
+    registDt       TIMESTAMP       NOT NULL, 
+    updtDt         TIMESTAMP       NULL, 
+    genre          VARCHAR(10)     NOT NULL, 
+    pdStatus       VARCHAR(10)     NULL
+)
+/
+
+CREATE SEQUENCE movieInfo_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER movieInfo_AI_TRG
+BEFORE INSERT ON movieInfo 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT movieInfo_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+/
+
+--DROP TRIGGER movieInfo_AI_TRG;
+/
+
+--DROP SEQUENCE movieInfo_SEQ;
+/
+
+COMMENT ON TABLE movieInfo IS '영화정보'
+/
+
+COMMENT ON COLUMN movieInfo.sn IS '순번'
+/
+
+COMMENT ON COLUMN movieInfo.movieNm IS '영화명'
+/
+
+COMMENT ON COLUMN movieInfo.movieNmEng IS '영화명(영문)'
+/
+
+COMMENT ON COLUMN movieInfo.movieCode IS '영화코드'
+/
+
+COMMENT ON COLUMN movieInfo.pdYear IS '제작연도'
+/
+
+COMMENT ON COLUMN movieInfo.pdCountry IS '제작국가'
+/
+
+COMMENT ON COLUMN movieInfo.director IS '감독'
+/
+
+COMMENT ON COLUMN movieInfo.casting IS '출연진'
+/
+
+COMMENT ON COLUMN movieInfo.pdCompany IS '제작사'
+/
+
+COMMENT ON COLUMN movieInfo.relseDate IS '개봉일자'
+/
+
+COMMENT ON COLUMN movieInfo.moviePoster IS '영화포스터'
+/
+
+COMMENT ON COLUMN movieInfo.score IS '영화평점'
+/
+
+COMMENT ON COLUMN movieInfo.plot IS '영화줄거리'
+/
+
+COMMENT ON COLUMN movieInfo.registDt IS '등록일자'
+/
+
+COMMENT ON COLUMN movieInfo.updtDt IS '수정일자'
+/
+
+COMMENT ON COLUMN movieInfo.genre IS '장르'
+/
+
+COMMENT ON COLUMN movieInfo.pdStatus IS '제작상태'
+/
+
+
+-- movieInfo Table Create SQL
+CREATE TABLE members
+(
+    sn            INT            NOT NULL, 
+    userId        VARCHAR(20)    primary key    NOT NULL, 
+    pwd           VARCHAR(20)    NOT NULL, 
+    userNm        VARCHAR(20)    NOT NULL, 
+    telNo         VARCHAR(20)    NOT NULL, 
+    email         VARCHAR(30)    NOT NULL, 
+    userBlock     VARCHAR(2)     NULL, 
+    replyBlock    VARCHAR(2)     NULL, 
+    registDt      TIMESTAMP      NOT NULL, 
+    updtDt        TIMESTAMP      NULL, 
+    updtType      VARCHAR(2)     NULL, 
+    userPower     VARCHAR(2)     NOT NULL
+)
+/
+
+CREATE SEQUENCE members_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER members_AI_TRG
+BEFORE INSERT ON members 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT members_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+/
+
+--DROP TRIGGER members_AI_TRG;
+/
+
+--DROP SEQUENCE members_SEQ;
+/
+
+COMMENT ON TABLE members IS '회원관리'
+/
+
+COMMENT ON COLUMN members.sn IS '순번'
+/
+
+COMMENT ON COLUMN members.userId IS '아이디'
+/
+
+COMMENT ON COLUMN members.pwd IS '비밀번호'
+/
+
+COMMENT ON COLUMN members.userNm IS '이름'
+/
+
+COMMENT ON COLUMN members.telNo IS '전화번호'
+/
+
+COMMENT ON COLUMN members.email IS '이메일'
+/
+
+COMMENT ON COLUMN members.userBlock IS '회원차단여부'
+/
+
+COMMENT ON COLUMN members.replyBlock IS '댓글차단여부'
+/
+
+COMMENT ON COLUMN members.registDt IS '회원가입일자'
+/
+
+COMMENT ON COLUMN members.updtDt IS '수정일자'
+/
+
+COMMENT ON COLUMN members.updtType IS '수정유형'
+/
+
+COMMENT ON COLUMN members.userPower IS '권한'
+/
+
+
+-- movieInfo Table Create SQL
+CREATE TABLE movieReview
+(
+    sn             INT             NOT NULL, 
+    movieNm        VARCHAR(30)     NOT NULL, 
+    rvTittle       VARCHAR(20)     NOT NULL, 
+    rvSubTittle    VARCHAR(20)     NOT NULL, 
+    rvContent      VARCHAR(500)    NULL, 
+    registDt       TIMESTAMP       NOT NULL, 
+    registId       VARCHAR(10)     NOT NULL, 
+    updtDt         TIMESTAMP       NOT NULL, 
+    updtId         VARCHAR(10)     NOT NULL, 
+    rvScore        FLOAT           NULL, 
+    movieCode      VARCHAR(20)     primary key  NOT NULL
+)
+/
+
+CREATE SEQUENCE movieReview_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER movieReview_AI_TRG
+BEFORE INSERT ON movieReview 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT movieReview_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+/
+
+--DROP TRIGGER movieReview_AI_TRG;
+/
+
+--DROP SEQUENCE movieReview_SEQ;
+/
+
+COMMENT ON TABLE movieReview IS '영화평론'
+/
+
+COMMENT ON COLUMN movieReview.sn IS '순번'
+/
+
+COMMENT ON COLUMN movieReview.movieNm IS '영화명'
+/
+
+COMMENT ON COLUMN movieReview.rvTittle IS '리뷰 제목'
+/
+
+COMMENT ON COLUMN movieReview.rvSubTittle IS '리뷰 소제목'
+/
+
+COMMENT ON COLUMN movieReview.rvContent IS '리뷰내용'
+/
+
+COMMENT ON COLUMN movieReview.registDt IS '등록일자'
+/
+
+COMMENT ON COLUMN movieReview.registId IS '등록자'
+/
+
+COMMENT ON COLUMN movieReview.updtDt IS '수정일자'
+/
+
+COMMENT ON COLUMN movieReview.updtId IS '수정자'
+/
+
+COMMENT ON COLUMN movieReview.rvScore IS '리뷰평점'
+/
+
+COMMENT ON COLUMN movieReview.movieCode IS '영화코드'
+/
+
+ALTER TABLE movieReview
+    ADD CONSTRAINT FK_movieReview_movieCode_movie FOREIGN KEY (movieCode)
+        REFERENCES movieInfo (movieCode)
+/
+
+
+-- movieInfo Table Create SQL
+CREATE TABLE moviePreview
+(
+    sn           INT             NOT NULL, 
+    movieCode    VARCHAR(20)     primary key    NOT NULL, 
+    sumry        VARCHAR(50)     NULL, 
+    prvLink      VARCHAR(100)    NOT NULL, 
+    movieNm      VARCHAR(30)     NOT NULL
+)
+/
+
+CREATE SEQUENCE moviePreview_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER moviePreview_AI_TRG
+BEFORE INSERT ON moviePreview 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT moviePreview_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+/
+
+--DROP TRIGGER moviePreview_AI_TRG;
+/
+
+--DROP SEQUENCE moviePreview_SEQ;
+/
+
+COMMENT ON TABLE moviePreview IS '프리뷰'
+/
+
+COMMENT ON COLUMN moviePreview.sn IS '순번'
+/
+
+COMMENT ON COLUMN moviePreview.movieCode IS '영화코드'
+/
+
+COMMENT ON COLUMN moviePreview.sumry IS '설명'
+/
+
+COMMENT ON COLUMN moviePreview.prvLink IS '동영상링크'
+/
+
+COMMENT ON COLUMN moviePreview.movieNm IS '영화명'
+/
+
+ALTER TABLE moviePreview
+    ADD CONSTRAINT FK_moviePreview_movieCode_movi FOREIGN KEY (movieCode)
+        REFERENCES movieInfo (movieCode)
+/
+
+
+-- movieInfo Table Create SQL
+CREATE TABLE actorInfo
+(
+    sn            INT             NOT NULL, 
+    actor         VARCHAR(10)     NOT NULL, 
+    movieCode     VARCHAR(20)     primary key   NULL, 
+    profile       VARCHAR(20)     NULL, 
+    photoLink     VARCHAR(100)    NULL, 
+    genger        VARCHAR(2)      NULL, 
+    age           VARCHAR(10)     NULL, 
+    contury       VARCHAR(20)     NULL, 
+    directorAt    VARCHAR(2)      NOT NULL
+)
+/
+
+CREATE SEQUENCE actorInfo_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER actorInfo_AI_TRG
+BEFORE INSERT ON actorInfo 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT actorInfo_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+/
+
+--DROP TRIGGER actorInfo_AI_TRG;
+/
+
+--DROP SEQUENCE actorInfo_SEQ;
+/
+
+COMMENT ON TABLE actorInfo IS '배우정보'
+/
+
+COMMENT ON COLUMN actorInfo.sn IS '순번'
+/
+
+COMMENT ON COLUMN actorInfo.actor IS '배우'
+/
+
+COMMENT ON COLUMN actorInfo.movieCode IS '영화코드'
+/
+
+COMMENT ON COLUMN actorInfo.profile IS '자기소개'
+/
+
+COMMENT ON COLUMN actorInfo.photoLink IS '사진'
+/
+
+COMMENT ON COLUMN actorInfo.genger IS '성별'
+/
+
+COMMENT ON COLUMN actorInfo.age IS '나이'
+/
+
+COMMENT ON COLUMN actorInfo.contury IS '국적'
+/
+
+COMMENT ON COLUMN actorInfo.directorAt IS '감독여부'
+/
+
+ALTER TABLE actorInfo
+    ADD CONSTRAINT FK_actorInfo_movieCode_movieIn FOREIGN KEY (movieCode)
+        REFERENCES movieInfo (movieCode)
+/
+
+
+-- movieInfo Table Create SQL
+CREATE TABLE reply
+(
+    sn           INT             NOT NULL, 
+    userId       VARCHAR(20)     primary key    NOT NULL, 
+    reply        VARCHAR(300)    NOT NULL, 
+    score        FLOAT           NOT NULL, 
+    movieCode    VARCHAR(20)     NOT NULL, 
+    registDt     TIMESTAMP       NOT NULL, 
+    updtDt       TIMESTAMP       NOT NULL, 
+    updtId       VARCHAR(20)     NOT NULL
+)
+/
+
+CREATE SEQUENCE reply_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER reply_AI_TRG
+BEFORE INSERT ON reply 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT reply_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+/
+
+--DROP TRIGGER reply_AI_TRG;
+/
+
+--DROP SEQUENCE reply_SEQ;
+/
+
+COMMENT ON TABLE reply IS '댓글관리'
+/
+
+COMMENT ON COLUMN reply.sn IS '순번'
+/
+
+COMMENT ON COLUMN reply.userId IS '회원번호'
+/
+
+COMMENT ON COLUMN reply.reply IS '댓글내용'
+/
+
+COMMENT ON COLUMN reply.score IS '평점'
+/
+
+COMMENT ON COLUMN reply.movieCode IS '영화코드'
+/
+
+COMMENT ON COLUMN reply.registDt IS '등록일자'
+/
+
+COMMENT ON COLUMN reply.updtDt IS '수정일자'
+/
+
+COMMENT ON COLUMN reply.updtId IS '수정자'
+/
+
+ALTER TABLE reply
+    ADD CONSTRAINT FK_reply_userId_members_userId FOREIGN KEY (userId)
+        REFERENCES members (userId)
+/
+
+ALTER TABLE reply
+    ADD CONSTRAINT FK_reply_movieCode_movieInfo_m FOREIGN KEY (movieCode)
+        REFERENCES movieInfo (movieCode)
+/
+
+commit;
+
+

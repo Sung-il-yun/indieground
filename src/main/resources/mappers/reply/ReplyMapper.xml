@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.indieground.movie.reply.repository.IReplyMapper">
+
+	<!-- ResultMap 선언 -->
+	<resultMap id="ReplyMap" type="com.indieground.movie.reply.model.ReplyVO">
+		<id property="userid" column="userid" />
+		<result property="sn" column="sn" />
+		<result property="score" column="score" />
+		<result property="moviecode" column="moviecode" />
+		<result property="registdt" column="registdt" />
+		<result property="updtdt" column="updtdt" />
+		<result property="updtid" column="updtid" />
+	</resultMap>
+	
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.indieground.movie.members.repository.IMembersMapper">
+
+	<!-- ResultMap 선언 -->
+	<resultMap id="MembersMap" type="com.indieground.movie.members.model.MembersVO">
+		<id property="userid" column="userid" />
+		<result property="sn" column="sn" />
+		<result property="pwd" column="pwd" />
+		<result property="usernm" column="usernm" />
+		<result property="telno" column="telno" />
+		<result property="email" column="email" />
+		<result property="userblock" column="userblock" />
+		<result property="replyblock" column="replyblock" />
+		<result property="registdt" column="registdt" />
+		<result property="updtdt" column="updtdt" />
+		<result property="updttype" column="updttype" />
+		<result property="userpower" column="userpower" />
+	</resultMap>
+	
+</mapper>
