@@ -12,7 +12,7 @@
 			<!-- Modal Header -->
 			<div class="modal-header">
 				<h4 class="modal-title">
-					<span style="color: #643691;">IZONE</span> 로그인
+					<span style="color: #000000; font-style:italic;">인디그라운드</span> 로그인
 				</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
@@ -48,14 +48,9 @@
 								placeholder="최소 8자"></td>
 						</tr>
 						<tr>
-							<td style="padding-top: 10px; text-align: center">
-								<p><strong>로그인하셔서 WIZONE이 되어보세요~~!</strong></p>
-							</td>
-						</tr>
-						<tr>
 							<td style="width: 100%; text-align: center; colspan: 2;"><input
 								type="button" value="로그인" class="btn form-control tooltipstered" id="signIn-btn"
-								style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">
+								style="background-color: #7f7f7f; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">
 							</td>
 						</tr>
 						<tr>
@@ -84,7 +79,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">
-					<span style="color: #643691;">IZONE</span> 회원 가입
+					<span style="color: #000000; font-style:italic;">인디그라운드</span> 회원 가입
 				</h4>
 				<button type="button" class="close" data-dismiss="modal">×</button>
 
@@ -167,16 +162,11 @@
 						--%>
 						
 						<tr>
-							<td style="padding-top: 10px; text-align: center">
-								<p><strong>회원가입하셔서 WIZONE이 되어보세요~~!</strong></p>
-							</td>
-						</tr>
-						<tr>
 							<td style="width: 100%; text-align: center; colspan: 2;">
 							<input
 								type="button" value="회원가입" 
 								class="btn form-control tooltipstered" id="signup-btn"
-								style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #388E3C; opacity: 0.8">
+								style="background-color: #7f7f7f; margin-top: 0; height: 40px; color: white; border: 0px solid #388E3C; opacity: 0.8">
 							</td>
 						</tr>
 

@@ -74,7 +74,7 @@
 
 <body>
 
-<div class="carousel2">
+	<div class="carousel2">
     	<c:forEach var="i" begin="0" end="14">
 			<div><img src="https://upload.wikimedia.org/wikipedia/en/3/3d/Recalled_film.jpg" style="height:300"></div>
 		</c:forEach>
