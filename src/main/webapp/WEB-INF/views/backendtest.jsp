@@ -9,8 +9,10 @@
 </head>
 <body>
 	
+	<img src="resources/coronavirus.jpg"> <br>
+		
 	<c:forEach var = "movieinfo" items="${test}">
-		<img src = ${movieinfo.movieposter} width="400", height="600"><br>
+		<img src = ${movieinfo.movieposter} width="400" height="600"><br>
          # 영화코드: ${movieinfo.moviecode}, 영화명: ${movieinfo.movienm} <br>
          # 줄거리: ${movieinfo.plot} <br>
     </c:forEach>
