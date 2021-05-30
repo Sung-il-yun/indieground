@@ -24,4 +24,9 @@ public class MovieInfoService implements IMovieInfoService {
 		mapper.insert(vo);
 	}
 
+	@Override
+	public List<MovieInfoVO> getList() {
+		return mapper.getList();
+	}
+
 }

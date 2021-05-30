@@ -8,7 +8,20 @@
 <jsp:include page="include/header.jsp" />
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>인디그라운드</title>
+    <link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
+    <link rel="stylesheet" href="resources/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="resources/assets/css/--mp---Multiple-items-slider-responsive.css">
+    <link rel="stylesheet" href="resources/assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="resources/assets/css/styles.css">
 
+
+    <link rel="stylesheet" type="text/css" href="resources/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css">
+    
 	<style type="text/css">
     html, body {
       margin: 0;
@@ -70,18 +83,38 @@
    }
    </style>
 
+
+
 </head>
 
 <body>
+	<c:forEach var = "moviepreview" items="${previewList}">
+	
+			<div class="modal fade" id="t${moviepreview.moviecode}" role="dialog" tabindex="-1">
+				<div class="modal-dialog modal-lg" role="document">
+            		<div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">${moviepreview.movienm}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body"><iframe class="embed-responsive-item" allowfullscreen="" width="100%" height="600" src=${moviepreview.prvlink}></iframe></div>
+                <div class="modal-footer"></div>
+            </div>
+            </div>
+            </div>
+    	</c:forEach>
+    	
+
 
 	<div class="carousel2">
-    	<c:forEach var="i" begin="0" end="14">
-			<div><img src="https://upload.wikimedia.org/wikipedia/en/3/3d/Recalled_film.jpg" style="height:300"></div>
-		</c:forEach>
+    	<c:forEach var = "movieinfo" items="${movieList}">
+			<img src = ${movieinfo.movieposter} data-toggle="modal" data-target="#t${movieinfo.moviecode}" width="400" height="600">
+    	</c:forEach>
+    		
     </div>
-
-
+    	
 <script>
+
 
 $(document).on('ready', function(){
 
@@ -170,6 +203,8 @@ slidesToScroll: 1
 
 
 </script>
+
+
 
 </body>
 

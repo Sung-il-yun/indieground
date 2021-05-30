@@ -8,5 +8,8 @@ public interface IMovieInfoService {
 	
 	//테스트 메서드
 	List<MovieInfoVO> test();
+	
+	List<MovieInfoVO> getList();
+	
 	void insert(MovieInfoVO vo);
 }

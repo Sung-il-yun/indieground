@@ -13,4 +13,8 @@
 		<result property="prvlink" column="prvlink" />
 		<result property="movienm" column="movienm" />
 	</resultMap>
+	
+	<select id="getList" resultMap="MoviePreviewMap">
+		SELECT * FROM moviepreview ORDER BY sn ASC
+	</select>
 </mapper>

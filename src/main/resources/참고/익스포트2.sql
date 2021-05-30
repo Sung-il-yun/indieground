@@ -1,0 +1,80 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 일요일-5월-30-2021   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table MOVIEPREVIEW
+--------------------------------------------------------
+
+  CREATE TABLE "SPRING"."MOVIEPREVIEW" 
+   (	"SN" NUMBER(*,0), 
+	"MOVIECODE" VARCHAR2(20 BYTE), 
+	"SUMRY" VARCHAR2(50 BYTE), 
+	"PRVLINK" VARCHAR2(200 BYTE), 
+	"MOVIENM" VARCHAR2(50 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "SPRING"."MOVIEPREVIEW"."SN" IS '순번';
+   COMMENT ON COLUMN "SPRING"."MOVIEPREVIEW"."MOVIECODE" IS '영화코드';
+   COMMENT ON COLUMN "SPRING"."MOVIEPREVIEW"."SUMRY" IS '설명';
+   COMMENT ON COLUMN "SPRING"."MOVIEPREVIEW"."PRVLINK" IS '동영상링크';
+   COMMENT ON COLUMN "SPRING"."MOVIEPREVIEW"."MOVIENM" IS '영화명';
+   COMMENT ON TABLE "SPRING"."MOVIEPREVIEW"  IS '프리뷰';
+REM INSERTING into SPRING.MOVIEPREVIEW
+SET DEFINE OFF;
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (1,'20158485','옥자 미리보기','https://youtube.com/embed/eOdMVj1mnHE','옥자');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (28,'20205041','분노의 질주 티저 영상','https://www.youtube.com/embed/L9Y-hn2COm0','분노의 질주 더 얼티메이트');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (30,'19990193','매트릭스 소개 영상','https://www.youtube.com/embed/m8e-FF8MsqU','매트릭스');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (32,'20208401','검객 티저 영상','https://www.youtube.com/embed/murHQPp1ao4','검객');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (34,'20162442','청년경찰 티저 영상','https://www.youtube.com/embed/uflYEv_0JoY','청년경찰');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (36,'20110899','세얼간이 티저 영상','https://www.youtube.com/embed/vtyuYXrJDrI','세 얼간이');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (38,'19780080','스타워즈 소개 영상','https://www.youtube.com/embed/1g3_CFmnU7k','스타워즈 새로운 희망');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (40,'19980074','타이타닉 소개 영상','https://www.youtube.com/embed/jUm88F3MEbQ','타이타닉');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (42,'20187861','몬스터 헌트2 티저 영상','https://www.youtube.com/embed/1GJTd4iB5dk','몬스터 헌트2: 요괴사냥단');
+Insert into SPRING.MOVIEPREVIEW (SN,MOVIECODE,SUMRY,PRVLINK,MOVIENM) values (44,'20020234','반지의 제왕 티저 영상','https://www.youtube.com/embed/wBDzJyNR6b4','반지의 제왕: 두개의 탑');
+--------------------------------------------------------
+--  DDL for Index SYS_C007180
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SPRING"."SYS_C007180" ON "SPRING"."MOVIEPREVIEW" ("MOVIECODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Trigger MOVIEPREVIEW_AI_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "SPRING"."MOVIEPREVIEW_AI_TRG" 
+BEFORE INSERT ON moviePreview 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT moviePreview_SEQ.NEXTVAL
+    INTO :NEW.sn
+    FROM DUAL;
+END;
+
+/
+ALTER TRIGGER "SPRING"."MOVIEPREVIEW_AI_TRG" ENABLE;
+--------------------------------------------------------
+--  Constraints for Table MOVIEPREVIEW
+--------------------------------------------------------
+
+  ALTER TABLE "SPRING"."MOVIEPREVIEW" ADD PRIMARY KEY ("MOVIECODE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "SPRING"."MOVIEPREVIEW" MODIFY ("MOVIENM" NOT NULL ENABLE);
+  ALTER TABLE "SPRING"."MOVIEPREVIEW" MODIFY ("PRVLINK" NOT NULL ENABLE);
+  ALTER TABLE "SPRING"."MOVIEPREVIEW" MODIFY ("MOVIECODE" NOT NULL ENABLE);
+  ALTER TABLE "SPRING"."MOVIEPREVIEW" MODIFY ("SN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table MOVIEPREVIEW
+--------------------------------------------------------
+
+  ALTER TABLE "SPRING"."MOVIEPREVIEW" ADD CONSTRAINT "FK_MOVIEPREVIEW_MOVIECODE_MOVI" FOREIGN KEY ("MOVIECODE")
+	  REFERENCES "SPRING"."MOVIEINFO" ("MOVIECODE") ENABLE;

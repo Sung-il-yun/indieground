@@ -9,7 +9,7 @@ public interface IMovieInfoMapper {
 	
 	//영화정보 전체조회 (테스트)
 	List<MovieInfoVO> test();
-
+	List<MovieInfoVO> getList();
 	void insert(MovieInfoVO vo);
 
 }

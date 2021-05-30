@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" type="text/css" href="resources/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css">
+    
 
     <style type="text/css">
     html, body {
@@ -204,62 +205,31 @@
                 <!-- c:로 절대경로를 줘야하는 것 같다. -->
                 
                     <li class="nav-item"><a class="nav-link active" href="<c:url value='/'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52, 58, 64, 0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">홈</button></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><button class="btn btn-dark" type="button" style="background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">영화소개</button></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">리뷰</button></a></li>
+                    <li class="nav-item"><a class="nav-link" href="<c:url value='/list'/>"><button class="btn btn-dark" type="button" style="background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">영화소개</button></a></li>
+                    <li class="nav-item"><a class="nav-link" href="<c:url value='/review'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">리뷰</button></a></li>
                     <li class="nav-item"><a class="nav-link" href="<c:url value='/preview'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">예고편</button></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);">관리자</button></a></li>
+                    <li class="nav-item"><a class="nav-link" href="<c:url value='/admin'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);">관리자</button></a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="modal fade" id="okja" role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">티저 영상 보기</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body"><iframe class="embed-responsive-item" allowfullscreen="" width="100%" height="600" src="https://youtube.com/embed/eOdMVj1mnHE"></iframe></div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
-    </div>
     
     
-    <div class="modal fade" id="parasite" role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">티저 영상 보기</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body"><iframe id="parasiteVd" class="embed-responsive-item" allowfullscreen="" width="100%" height="600" src="https://youtube.com/embed/Q38h5XD4RKE"></iframe></div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal fade" id="namhan" role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">티저 영상 보기</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body"><iframe class="embed-responsive-item" allowfullscreen="" width="100%" height="600" src="https://youtube.com/embed/s2KFCmJ3XOM"></iframe></div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
-    </div>
-    
-    
+    <c:if test="${mainPage != null}">
     <div class="row justify-content-center">
+    	
         <div class="col-auto"><a class="text-muted" href="#">&nbsp;<i class="fa fa-search"></i>&nbsp;</a><input type="search"><a href="#">&nbsp;&nbsp;</a><button class="btn btn-info" type="button" style="background: rgba(23,162,184,0.6);">검색</button></div>
     </div>
     <div class="container" style="width: 1071px;">
-        <div class="dropdown"><button class="btn btn-secondary dropdown-toggle" aria-expanded="false" data-toggle="dropdown" type="button" style="background: rgba(108,117,125,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">장르순</button>
-            <div class="dropdown-menu"><a class="dropdown-item" href="#">장르순</a><a class="dropdown-item" href="#">최신순</a><a class="dropdown-item" href="#">이름순</a></div>
+        <div class="dropdown">
+        	<select onchange='alert("변경됨");' style="height: 43px;border-width: 0.5px;border-color: rgba(54, 98, 101,0.5);border-top-color: rgb(0,;border-right-color: #ffffff;border-bottom-color: 0);border-left-color: 0,;background: rgba(102, 215, 215, 0.5);color: rgb(255,255,255);border-radius: 7px;width: 114px;">
+        		<option value="genre" selected>장르순</option>
+        		<option value="name">이름순</option>
+        		<option value="releasedate">최신순</option>
+        	</select>
         </div>
     </div>
-    
+    </c:if>
     
     
 	<script src="resources/assets/js/jquery.min.js"></script>

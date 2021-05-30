@@ -32,6 +32,10 @@
 		SELECT * FROM movieinfo ORDER BY sn ASC
 	</select>
 	
+	<select id="getList" resultMap="MovieInfoMap">
+		SELECT * FROM movieinfo ORDER BY sn ASC
+	</select>
+	
 	<!-- default 값이 없기 때문에 sysdate를 직접 입력한다. -->
 	<insert id="insert">
 		INSERT INTO movieinfo
