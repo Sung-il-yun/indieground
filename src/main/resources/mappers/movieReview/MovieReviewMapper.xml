@@ -7,16 +7,53 @@
 
 	<!-- ResultMap 선언 -->
 	<resultMap id="MovieReviewMap" type="com.indieground.movie.movieReview.model.MovieReviewVO">
-		<id property="moviecode" column="moviecode" />
-		<result property="sn" column="sn" />
+		<id property="sn" column="sn" />
+		<result property="moviecode" column="moviecode" />
 		<result property="movienm" column="movienm" />
 		<result property="rvtittle" column="rvtittle" />
 		<result property="rvsubtittle" column="rvsubtittle" />
 		<result property="rvcontent" column="rvcontent" />
 		<result property="registdt" column="registdt" />
+		<result property="registid" column="registid"/>
 		<result property="updtdt" column="updtdt" />
 		<result property="updtid" column="updtid" />
 		<result property="rvscore" column="rvscore" />
 	</resultMap>
+	
+	<!-- 리뷰 쓰기, 리뷰 단일 조회하기, 리뷰 일괄 조회하기, 리뷰 수정하기, 리뷰 삭제하기 -->
+	
+	
+	<select id="getList" resultMap="MovieReviewMap">
+		SELECT * FROM moviereview ORDER BY updtdt DESC 
+	</select>
+	
+	<select id="getItem" resultMap="MovieReviewMap">
+		SELECT * FROM moviereview WHERE sn = #{sn} ORDER BY updtdt DESC
+	</select>
+	
+	<!-- default 값이 없기 때문에 sysdate를 직접 입력한다. -->
+	<insert id="insert">
+		INSERT INTO moviereview
+		VALUES(moviereview_SEQ.NEXTVAL, #{movienm}, #{rvtittle}, #{rvsubtittle}, #{rvcontent}, sysdate, #{registid}, sysdate, #{registid}, #{rvscore}, #{moviecode})
+	</insert>
+	
+	<update id="modify">
+		UPDATE moviereview 
+		SET 
+			movienm=#{movienm},
+			rvtittle=#{rvtittle}, 
+			rvsubtittle=#{rvsubtittle},
+			rvcontent=#{rvcontent},
+			updtdt = sysdate,
+			updtid=#{updtid},
+			rvscore=#{rvscore}
+			WHERE sn=#{sn}
+	</update>
+	
+	
+	<delete id="delete">
+		DELETE moviereview WHERE sn=#{sn}
+	</delete>
+	
 	
 </mapper>

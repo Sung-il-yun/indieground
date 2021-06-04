@@ -146,6 +146,34 @@
 								placeholder="한글로 최대 6자"></td>
 						</tr>
 						
+						<tr>
+							<td style="text-align: left">
+								<p><strong>전화번호를 입력해주세요.</strong></p>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="text" name="telno" id="telno"
+								class="form-control tooltipstered" maxlength="15"
+								required="required" aria-required="true"
+								style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
+								placeholder="예02-1234-5678"></td>
+						</tr>
+						
+						
+						<tr>
+							<td style="text-align: left">
+								<p><strong>이메일을 입력해주세요.</strong></p>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="text" name="email" id="email"
+								class="form-control tooltipstered" maxlength="30"
+								required="required" aria-required="true"
+								style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
+								placeholder="example@example.com"></td>
+						</tr>
+						
+						
 						<%-- 
 						<tr>
 							<td style="text-align: left">
@@ -216,7 +244,7 @@
 				//클라이언트에서 서버와 통신하는 ajax함수 (비동기 통신)
 				$.ajax({
 					type: "POST", //서버에 전송하는 HTTP 방식
-					url: "/user/checkId", //서버 요청 URL
+					url: "/movie/checkId", //서버 요청 URL
 					headers: {
 						"Content-Type" : "application/json"
 					}, //요청 헤더 정보
@@ -238,6 +266,7 @@
 					},
 					error: function() {
 						console.log("통신 실패!");
+						//chk1 = true;
 					}
 		
 				}); //end ajax (아이디 중복 확인)
@@ -320,17 +349,32 @@
 				const id = $('#user_id').val();
 				const pw = $('#password').val();
 				const name = $('#user_name').val();
+				const telno = $('#telno').val();
+				const email = $('#email').val();
+				const i = 1;
+				
+				//널값 방지를 위해 미리 입력
 				
 				const user = {
-						account : id,
-						password : pw,
-						name : name
+						sn : i,
+						userid : id,
+						pwd : pw,
+						usernm : name,
+						telno : telno,
+						email : email,
+						
+						userblock : '0',
+						replyblock : '0',
+						registdt : Date.now(),
+						updtdt : Date.now(),
+						updttype : '0',
+						userpower : '0'
 				};
 				
 				//비동기 통신 시작 (ajax)
 				$.ajax({
 					type: "POST",
-					url: "/user/",
+					url: "/movie/register/",
 					headers: {
 						"Content-type" : "application/json"
 					},
@@ -340,7 +384,7 @@
 						console.log("통신 성공!: " + result);
 						if(result == "joinSuccess") {
 							alert("회원 가입에 성공했습니다!");
-							location.href="/";
+							location.href="/movie";
 						} else {
 							alert("회원 가입에 실패했습니다.");
 						}
@@ -419,13 +463,13 @@
 				console.log("pw: " + pw);
 				
 				const userInfo = {
-						account : id,
-						password : pw
+						userid : id,
+						pwd : pw
 				};
 				
 				$.ajax({
 					type: "POST",
-					url: "/user/loginCheck",
+					url: "/movie/login",
 					headers: {
 						"Content-Type" : "application/json"
 					},
@@ -446,7 +490,7 @@
 							$('#signInPw').focus();
 							chk2 = false;
 						} else if(data === "loginSuccess") {
-							self.location = "/";
+							self.location = "/movie/";
 						}
 					},
 					error: function() {

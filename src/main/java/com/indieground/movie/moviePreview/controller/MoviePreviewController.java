@@ -19,6 +19,7 @@ public class MoviePreviewController {
 	
 	@GetMapping("preview")
 	public String moviePreview(Model model) {
+		model.addAttribute("moviePreview", service.getList());
 		return "moviePreview";
 	}
 	

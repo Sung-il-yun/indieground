@@ -21,7 +21,7 @@
 	<!-- hikariconnectionpool 빈 등록 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.4:1521/XE"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/XEPDB1"/>
 		<property name="username" value="spring"/>
 		<property name="password" value="spring"/>
 	</bean>

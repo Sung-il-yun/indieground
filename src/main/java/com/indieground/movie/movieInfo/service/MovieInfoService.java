@@ -29,4 +29,19 @@ public class MovieInfoService implements IMovieInfoService {
 		return mapper.getList();
 	}
 
+	@Override
+	public MovieInfoVO getItem(String moviecode) {
+		return mapper.getItem(moviecode);
+	}
+
+	@Override
+	public void modify(MovieInfoVO vo) {
+		mapper.modify(vo);
+	}
+
+	@Override
+	public void delete(String moviecode) {
+		mapper.delete(moviecode);
+	}
+
 }

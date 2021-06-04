@@ -48,5 +48,7 @@
 	})
 	</script>
 
+	
+	<a href= "javascript:history.back();">돌아가기</a>
 
 <jsp:include page="../include/footer.jsp" />

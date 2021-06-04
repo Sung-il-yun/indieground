@@ -38,12 +38,17 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpServletRequest req) {
+	public String home(Locale locale, Model model, HttpServletRequest req, String carousel) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		model.addAttribute("movieList", service.getList());
 		model.addAttribute("previewList", prvService.getList());
 		model.addAttribute("mainPage", "1");
 		
+		//별도로 옵션을 추가하여 어떤 파라미터를 넣었는지 전달한다.
+		if(carousel == null)
+			carousel = "genre";
+		
+		model.addAttribute("carousel", carousel);
 		return "home";
 	}
 	
@@ -69,5 +74,10 @@ public class HomeController {
 	public String admin(Model model){
 		
 		return "admin";
+	}
+	
+	@GetMapping(value="/search")
+	public String search(Model model) {
+		return "search";
 	}
 }

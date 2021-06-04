@@ -1,5 +1,9 @@
 package com.indieground.movie.members.repository;
 
-public interface IMembersMapper {
+import com.indieground.movie.members.model.MembersVO;
 
+public interface IMembersMapper {
+	void register(MembersVO vo);
+	int checkId(String id);
+	MembersVO selectOne(String id);
 }

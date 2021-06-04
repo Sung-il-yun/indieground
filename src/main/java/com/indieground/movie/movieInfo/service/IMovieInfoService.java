@@ -10,6 +10,9 @@ public interface IMovieInfoService {
 	List<MovieInfoVO> test();
 	
 	List<MovieInfoVO> getList();
-	
+	MovieInfoVO getItem(String moviecode);
 	void insert(MovieInfoVO vo);
+	void modify(MovieInfoVO vo);
+	
+	void delete(String moviecode);
 }

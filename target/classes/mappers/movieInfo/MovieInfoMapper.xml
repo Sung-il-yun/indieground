@@ -33,7 +33,11 @@
 	</select>
 	
 	<select id="getList" resultMap="MovieInfoMap">
-		SELECT * FROM movieinfo ORDER BY sn ASC
+		SELECT * FROM movieinfo ORDER BY relsedate DESC 
+	</select>
+	
+	<select id="getItem" resultMap="MovieInfoMap">
+		SELECT * FROM movieinfo WHERE moviecode = #{moviecode} ORDER BY sn ASC
 	</select>
 	
 	<!-- default 값이 없기 때문에 sysdate를 직접 입력한다. -->
@@ -42,6 +46,28 @@
 		VALUES(movieinfo_SEQ.NEXTVAL, #{movienm}, #{movienmeng}, #{moviecode}, #{pdyear}, #{pdcountry}, #{director}, #{casting}, #{pdcompany}, #{relsedate}, #{movieposter}, #{score}, #{plot}, sysdate, sysdate, #{genre}, #{pdstatus})
 	</insert>
 	
+	<update id="modify">
+		UPDATE movieinfo 
+		SET 
+			movienm=#{movienm}, 
+			movienmeng=#{movienmeng},
+			pdyear=#{pdyear},
+			pdcountry=#{pdcountry},
+			director=#{director},
+			casting=#{casting},
+			pdcompany=#{pdcompany},
+			relsedate=#{relsedate},
+			movieposter=#{movieposter},
+			score=#{score},
+			updtdt=sysdate,
+			genre=#{genre},
+			pdstatus=#{pdstatus}
+			WHERE moviecode=#{moviecode}
+	</update>
 	
+	
+	<delete id="delete">
+		DELETE movieinfo WHERE moviecode=#{moviecode}
+	</delete>
 	
 </mapper>

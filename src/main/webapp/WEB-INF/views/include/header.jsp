@@ -11,16 +11,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>인디그라운드</title>
-    <link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<c:url value= '/resources/assets/bootstrap/css/bootstrap.min.css'/>" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,800">
-    <link rel="stylesheet" href="resources/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="resources/assets/css/--mp---Multiple-items-slider-responsive.css">
-    <link rel="stylesheet" href="resources/assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="resources/assets/css/styles.css">
+    <link rel="stylesheet" href="<c:url value= '/resources/assets/fonts/font-awesome.min.css'/>">
+    <link rel="stylesheet" href="<c:url value= '/resources/assets/css/--mp---Multiple-items-slider-responsive.css'/>">
+    <link rel="stylesheet" href= "<c:url value= '/resources/assets/css/Navigation-with-Search.css'/>">
+    <link rel="stylesheet" href= "<c:url value='/resources/assets/css/styles.css'/>">
 
-    <link rel="stylesheet" type="text/css" href="resources/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/slick/slick.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/slick/slick-theme.css'/>">
     
 
     <style type="text/css">
@@ -179,7 +179,7 @@
 
 </head>
 
-<body class="mainbody" style="background: url(&quot;resources/assets/img/film-background-1334067869u9d.jpg&quot;);background-size: cover;">
+<body class="mainbody" style="background: url(&quot;<c:url value='/resources/assets/img/film-background-1334067869u9d.jpg'/>&quot;);background-size: cover;">
     <div class="container">
         <nav class="navbar navbar-light navbar-expand-md headerbar" style="background: rgba(0,0,0,0);">
             <div class="container-fluid"><a class="navbar-brand logo" href="#" style="color: rgba(0,0,0,0.7);"><strong>인디그라운드</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -191,7 +191,12 @@
                         <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-search" style="width: 19.8594px;"></i><input type="search" style="margin: 5px;"></a></li>
                         <li class="nav-item"><a class="nav-link" href="#"><button class="btn btn-info" type="button" style="color: rgba(255,255,255,0.94);border-color: rgba(255,255,255,0.94);background: rgba(23,162,184,0.6);">검색</button></a></li>
                         </c:if>
+                        <c:if test="${login == null }">
                         <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#log-in"><button class="btn btn-primary" type="button" style="background: rgba(0,123,255,0.6);color: rgba(255,255,255,0.9);border-color: rgba(255,255,255,0.9);">로그인</button></a></li>
+						</c:if>
+						<c:if test="${login != null }">
+                        <li class="nav-item"><a class="nav-link" href="<c:url value='/logout' />"><button class="btn btn-primary" type="button" style="background: rgba(0,123,255,0.6);color: rgba(255,255,255,0.9);border-color: rgba(255,255,255,0.9);">로그아웃</button></a></li>
+						</c:if>
                     </ul>
                 </div>
             </div>
@@ -208,42 +213,28 @@
                     <li class="nav-item"><a class="nav-link" href="<c:url value='/list'/>"><button class="btn btn-dark" type="button" style="background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">영화소개</button></a></li>
                     <li class="nav-item"><a class="nav-link" href="<c:url value='/review'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">리뷰</button></a></li>
                     <li class="nav-item"><a class="nav-link" href="<c:url value='/preview'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;">예고편</button></a></li>
+                    <c:if test="${admin != null }">
                     <li class="nav-item"><a class="nav-link" href="<c:url value='/admin'/>"><button class="btn btn-dark" type="button" style="width: 90px;background: rgba(52,58,64,0.8);border-color: rgb(255, 255, 255);">관리자</button></a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>
     </nav>
     
     
-    <c:if test="${mainPage != null}">
-    <div class="row justify-content-center">
-    	
-        <div class="col-auto"><a class="text-muted" href="#">&nbsp;<i class="fa fa-search"></i>&nbsp;</a><input type="search"><a href="#">&nbsp;&nbsp;</a><button class="btn btn-info" type="button" style="background: rgba(23,162,184,0.6);">검색</button></div>
-    </div>
-    <div class="container" style="width: 1071px;">
-        <div class="dropdown">
-        	<select onchange='alert("변경됨");' style="height: 43px;border-width: 0.5px;border-color: rgba(54, 98, 101,0.5);border-top-color: rgb(0,;border-right-color: #ffffff;border-bottom-color: 0);border-left-color: 0,;background: rgba(102, 215, 215, 0.5);color: rgb(255,255,255);border-radius: 7px;width: 114px;">
-        		<option value="genre" selected>장르순</option>
-        		<option value="name">이름순</option>
-        		<option value="releasedate">최신순</option>
-        	</select>
-        </div>
-    </div>
-    </c:if>
     
+	<script src="<c:url value='/resources/assets/js/jquery.min.js'/>"></script>
+    <script src= "<c:url value='/resources/assets/bootstrap/js/bootstrap.min.js'/>"></script>
+    <script src="<c:url value='/resources/assets/js/--mp---Multiple-items-slider-responsive-1.js'/>"></script>
+    <script src= "<c:url value='/resources/assets/js/--mp---Multiple-items-slider-responsive.js'/>"></script>
     
-	<script src="resources/assets/js/jquery.min.js"></script>
-    <script src="resources/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="resources/assets/js/--mp---Multiple-items-slider-responsive-1.js"></script>
-    <script src="resources/assets/js/--mp---Multiple-items-slider-responsive.js"></script>
-    
-    <script src="resources/assets/js/bootstrap4-rating-input.js"></script>
+    <script src= "<c:url value='/resources/assets/js/bootstrap4-rating-input.js'/>"></script>
 
 
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-    <script src="resources/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<c:url value='/resources/slick/slick.js'/>" type="text/javascript" charset="utf-8"></script>
     
     
     
-	<%@ include file="users/login_modal.jsp" %>  
+	<%@ include file="members/login_modal.jsp" %>  

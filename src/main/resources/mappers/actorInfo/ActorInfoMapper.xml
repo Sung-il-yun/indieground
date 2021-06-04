@@ -7,8 +7,8 @@
 
 	<!-- ResultMap 선언 -->
 	<resultMap id="ActorInfoMap" type="com.indieground.movie.actorInfo.model.ActorInfoVO">
-		<id property="moviecode" column="moviecode" />
-		<result property="sn" column="sn" />
+		<id property="sn" column="sn" />
+		<result property="moviecode" column="moviecode" />
 		<result property="actor" column="actor" />
 		<result property="profile" column="profile" />
 		<result property="photolink" column="photolink" />
@@ -17,5 +17,14 @@
 		<result property="contury" column="contury"/>
 		<result property="directorat" column="directorat"/>
 	</resultMap>
+
+	<insert id="insert">
+		INSERT INTO actorinfo
+		VALUES(actorinfo_SEQ.NEXTVAL, #{actor}, #{moviecode}, #{profile}, #{photolink}, #{genger}, #{age}, #{contury}, #{directorat})
+	</insert>
+	
+	<select id="getList" resultMap="ActorInfoMap">
+		SELECT * FROM actorinfo 
+	</select>
 
 </mapper>
