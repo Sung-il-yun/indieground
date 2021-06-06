@@ -14,7 +14,7 @@
 			<div id="imgurl"></div>
 			
 			배우이름: <input name="actor"> <br>
-			영화코드: <input name="moviecode"> <br>
+			영화코드: <input name="moviecode" value="${code}"> <br>
 			배우약력: <input name="profile"> <br>
 			사진: <input id="image" name="photolink"> <button type = "button" id = "preview">미리보기</button> <br>
 			성별: <input name="genger"> <br>

@@ -16,5 +16,6 @@ public interface IMovieInfoMapper {
 	void modify(MovieInfoVO vo);
 	
 	void delete(String moviecode);
-
+	
+	List<MovieInfoVO> search(String keyword);
 }

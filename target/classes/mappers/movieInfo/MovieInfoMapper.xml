@@ -70,4 +70,16 @@
 		DELETE movieinfo WHERE moviecode=#{moviecode}
 	</delete>
 	
+	<select id="search" resultMap="MovieInfoMap">
+		SELECT * FROM movieinfo 
+		where movienm like '%'||#{keyword}||'%' or 
+		movienmeng like '%'||#{keyword}||'%' or 
+		plot like '%'||#{keyword}||'%' or 
+		casting like '%'||#{keyword}||'%' or 
+		director like '%'||#{keyword}||'%' or 
+		pdcompany like '%'||#{keyword}||'%' 
+		ORDER BY relsedate DESC 
+	</select>
+	
+	
 </mapper>

@@ -10,4 +10,7 @@ public interface IMovieReviewService {
 	void insert(MovieReviewVO vo);
 	void modify(MovieReviewVO vo);
 	void delete(int sn);
+	
+
+	List<MovieReviewVO> search(String keyword);
 }

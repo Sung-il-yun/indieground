@@ -44,4 +44,9 @@ public class MovieInfoService implements IMovieInfoService {
 		mapper.delete(moviecode);
 	}
 
+	@Override
+	public List<MovieInfoVO> search(String keyword) {
+		return mapper.search(keyword);
+	}
+
 }

@@ -89,33 +89,42 @@
 
 <body>
 
+<div style="margin-left:50px; margin-right:50px;">
+
 	<div class="row justify-content-center">
     	
-        <div class="col-auto"><a class="text-muted" href="#">&nbsp;<i class="fa fa-search"></i>&nbsp;</a><input type="search"><a href="#">&nbsp;&nbsp;</a><button class="btn btn-info" type="button" style="background: rgba(23,162,184,0.6);">검색</button></div>
+        <div class="col-auto"><a class="text-muted" href="#">&nbsp;<i class="fa fa-search"></i>&nbsp;</a><input id="searchbox2" type="search"><a href="#">&nbsp;&nbsp;</a><button id="searchbtn2" class="btn btn-info" type="button" style="background: rgba(23,162,184,0.6);">검색</button></div>
     </div>
+    
+    
+    
     <div class="container" style="width: 1071px;">
         <div class="dropdown">
         	<select id ="caro" onchange='location.href = "../" + "movie?carousel=" + (document.getElementById("caro").options[document.getElementById("caro").options.selectedIndex].value);' style="height: 43px;border-width: 0.5px;border-color: rgba(54, 98, 101,0.5);border-top-color: rgb(0,;border-right-color: #ffffff;border-bottom-color: 0);border-left-color: 0,;background: rgba(102, 215, 215, 0.5);color: rgb(255,255,255);border-radius: 7px;width: 114px;">
         		<c:if test="${carousel == 'genre' }">
-				<option value="genre" selected>장르순</option>
-        		<option value="name">이름순</option>
-        		<option value="releasedate">최신순</option>
+				<option value="genre" selected>&nbsp;&nbsp;장르순</option>
+        		<option value="name">&nbsp;&nbsp;이름순</option>
+        		<option value="releasedate">&nbsp;&nbsp;최신순</option>
 				</c:if>
 				<c:if test="${carousel == 'name' }">
-				<option value="genre">장르순</option>
-        		<option value="name" selected>이름순</option>
-        		<option value="releasedate">최신순</option>
+				<option value="genre">&nbsp;&nbsp;장르순</option>
+        		<option value="name" selected>&nbsp;&nbsp;이름순</option>
+        		<option value="releasedate">&nbsp;&nbsp;최신순</option>
 				</c:if>
 				
 				<c:if test="${carousel == 'releasedate' }">
-				<option value="genre">장르순</option>
-        		<option value="name">이름순</option>
-        		<option value="releasedate" selected>최신순</option>
+				<option value="genre">&nbsp;&nbsp;장르순</option>
+        		<option value="name">&nbsp;&nbsp;이름순</option>
+        		<option value="releasedate" selected>&nbsp;&nbsp;최신순</option>
 				</c:if>
 
         	</select>
         </div>
     </div>
+    
+    
+<div style="background-color:rgba(255,255,255, 0.4);">
+
 
 
 	<!-- 넘겨받은 파라미터를 통해 어떤 것을 기준으로 정렬할지 결정한다. 이미 기준은 나와있다. -->
@@ -245,6 +254,9 @@
 
     	
 <script>
+
+
+
 
 
 $(document).on('ready', function(){
@@ -420,8 +432,18 @@ $(".carousel4").slick({
 
 </script>
 
+<script>
+	$("#searchbtn2").click(function(){
+		//console.log($('#searchbox').val())
+		var v = $('#searchbox2').val()
+		location.href="search?keyword="+ v;
+	})
+	</script>
+
+</div>
 
 
+</div>
 </body>
 
 <jsp:include page="include/footer.jsp" />

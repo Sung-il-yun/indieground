@@ -7,13 +7,51 @@
 
 	<!-- ResultMap 선언 -->
 	<resultMap id="ReplyMap" type="com.indieground.movie.reply.model.ReplyVO">
-		<id property="userid" column="userid" />
-		<result property="sn" column="sn" />
+		<id property="sn" column="sn" />
+		<result property="userid" column="userid" />
 		<result property="score" column="score" />
+		<result property="reply" column="reply"/>
 		<result property="moviecode" column="moviecode" />
 		<result property="registdt" column="registdt" />
 		<result property="updtdt" column="updtdt" />
 		<result property="updtid" column="updtid" />
 	</resultMap>
+	
+	
+	<select id="getList" resultMap="ReplyMap">
+		SELECT * FROM reply ORDER BY updtdt DESC 
+	</select>
+	
+	<select id="getItem" resultMap="ReplyMap">
+		SELECT * FROM reply WHERE sn = #{sn} ORDER BY updtdt DESC
+	</select>
+	
+	<!-- default 값이 없기 때문에 sysdate를 직접 입력한다. -->
+	<insert id="insert">
+		INSERT INTO reply
+		VALUES(reply_SEQ.NEXTVAL, #{userid}, #{reply}, #{score}, #{moviecode}, sysdate, sysdate, #{userid})
+	</insert>
+	
+	<update id="modify">
+		UPDATE reply 
+		SET 
+			reply=#{reply},
+			score=#{score},
+			updtdt = sysdate,
+			updtid=#{updtid}
+			WHERE sn=#{sn}
+	</update>
+	
+	
+	<delete id="delete">
+		DELETE reply WHERE sn=#{sn}
+	</delete>
+	
+	
+	<select id="search" resultMap="ReplyMap">
+		SELECT * FROM reply 
+		where reply like '%'||#{keyword}||'%' 
+		ORDER BY updtdt DESC 
+	</select>
 	
 </mapper>

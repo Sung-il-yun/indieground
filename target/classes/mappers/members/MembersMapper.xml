@@ -41,4 +41,20 @@
 		WHERE userid=#{userid}
 	</select>
 	
+	<select id="getList" resultMap="MembersMap">
+		SELECT * FROM members 
+	</select>
+	
+	
+	<!-- 어드민이 조작하는 경우만을 뜻함. -->
+	<update id="modify">
+		UPDATE members 
+		SET 
+			userblock=#{userblock},
+			replyblock=#{replyblock},
+			updtdt=sysdate,
+			updttype='1'
+			WHERE userid=#{userid}
+	</update>
+	
 </mapper>

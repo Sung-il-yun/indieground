@@ -20,9 +20,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.indieground.movie.actorInfo.service.IActorInfoService;
+import com.indieground.movie.members.service.IMembersService;
 import com.indieground.movie.movieInfo.model.MovieInfoVO;
 import com.indieground.movie.movieInfo.service.IMovieInfoService;
 import com.indieground.movie.moviePreview.service.IMoviePreviewService;
+import com.indieground.movie.movieReview.service.IMovieReviewService;
+import com.indieground.movie.reply.service.IReplyService;
 
 /**
  * Handles requests for the application home page.
@@ -32,6 +36,19 @@ public class HomeController {
 	
 	@Autowired
 	private IMoviePreviewService prvService;
+	
+	@Autowired
+	private IMembersService memService;
+	
+	@Autowired
+	private IActorInfoService actService;
+	
+	@Autowired
+	private IMovieReviewService rvService;
+	
+	@Autowired
+	private IReplyService replyService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -72,12 +89,18 @@ public class HomeController {
 	
 	@GetMapping(value="/admin")
 	public String admin(Model model){
-		
+		model.addAttribute("membersList", memService.getList());
 		return "admin";
 	}
 	
+	
 	@GetMapping(value="/search")
-	public String search(Model model) {
+	public String search(Model model, String keyword) {
+		System.out.println(keyword);
+		model.addAttribute("movieSearch", service.search(keyword));
+		model.addAttribute("actSearch", actService.search(keyword));
+		model.addAttribute("rvSearch", rvService.search(keyword));
+		model.addAttribute("replySearch", replyService.search(keyword));
 		return "search";
 	}
 }

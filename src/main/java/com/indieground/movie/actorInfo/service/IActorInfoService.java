@@ -8,4 +8,5 @@ public interface IActorInfoService {
 	void insert(ActorInfoVO vo);
 	
 	List<ActorInfoVO> getList();
+	List<ActorInfoVO> search(String keyword);
 }

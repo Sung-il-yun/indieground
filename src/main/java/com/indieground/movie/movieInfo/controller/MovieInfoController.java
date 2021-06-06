@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.indieground.movie.actorInfo.service.ActorInfoService;
 import com.indieground.movie.movieInfo.model.MovieInfoVO;
 import com.indieground.movie.movieInfo.service.MovieInfoService;
+import com.indieground.movie.reply.service.ReplyService;
 
 @Controller
 public class MovieInfoController {
@@ -19,6 +20,9 @@ public class MovieInfoController {
 	
 	@Autowired
 	private ActorInfoService actorservice;
+	
+	@Autowired
+	private ReplyService replyservice;
 	
 	@GetMapping("/insert")
 	public String insert(Model model) {
@@ -42,6 +46,7 @@ public class MovieInfoController {
 	public String detail(String moviecode, Model model) {
 		model.addAttribute("movie", service.getItem(moviecode));
 		model.addAttribute("actors", actorservice.getList());
+		model.addAttribute("replies", replyservice.getList());
 		System.out.println(moviecode);
 		return "/movie/detail";
 	}

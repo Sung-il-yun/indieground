@@ -25,4 +25,9 @@ public class ActorInfoService implements IActorInfoService {
 		return mapper.getList();
 	}
 
+	@Override
+	public List<ActorInfoVO> search(String keyword) {
+		return mapper.search(keyword);
+	}
+
 }

@@ -40,4 +40,9 @@ public class MovieReviewService implements IMovieReviewService {
 		mapper.delete(sn);
 	}
 
+	@Override
+	public List<MovieReviewVO> search(String keyword) {
+		return mapper.search(keyword);
+	}
+
 }

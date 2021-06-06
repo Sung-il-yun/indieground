@@ -188,8 +188,8 @@
                     
                     	<!-- HomeController.java의 home()에서 넘겨준 mainPage 값의 유무를 검사하여, mainPage 값이 없으면 출력한다. -->
                     	<c:if test="${mainPage == null}">
-                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-search" style="width: 19.8594px;"></i><input type="search" style="margin: 5px;"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><button class="btn btn-info" type="button" style="color: rgba(255,255,255,0.94);border-color: rgba(255,255,255,0.94);background: rgba(23,162,184,0.6);">검색</button></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-search" style="width: 19.8594px;"></i><input id="searchbox" type="search" style="margin: 5px;"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><button id="searchbtn" class="btn btn-info" type="button" style="color: rgba(255,255,255,0.94);border-color: rgba(255,255,255,0.94);background: rgba(23,162,184,0.6);">검색</button></a></li>
                         </c:if>
                         <c:if test="${login == null }">
                         <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#log-in"><button class="btn btn-primary" type="button" style="background: rgba(0,123,255,0.6);color: rgba(255,255,255,0.9);border-color: rgba(255,255,255,0.9);">로그인</button></a></li>
@@ -234,6 +234,14 @@
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="<c:url value='/resources/slick/slick.js'/>" type="text/javascript" charset="utf-8"></script>
+    
+    <script>
+	$("#searchbtn").click(function(){
+		//console.log($('#searchbox').val())
+		var v = $('#searchbox').val()
+		location.href="search?keyword="+ v;
+	})
+	</script>
     
     
     

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,21 @@ public class MembersController {
 
 	@Autowired
 	IMembersService service;
+	
+	
+	@GetMapping("/members/modify")
+	public String modify(Model model, String userid) {
+		model.addAttribute("member", service.selectOne(userid));
+		return "/members/modify";
+	}
+	
+	@PostMapping("/members/modify")
+	public String modify(MembersVO vo) {
+		service.modify(vo);
+		return "redirect:/members/modify?userid=" + vo.getUserid();
+	}
+	
+	
 	
 	@PostMapping("/register")
 	@ResponseBody

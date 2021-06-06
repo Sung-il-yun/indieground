@@ -17,7 +17,8 @@ public class ActorInfoController {
 	IActorInfoService service;
 	
 	@GetMapping("/actorInsert")
-	public String actorInsert(Model model) {
+	public String actorInsert(Model model, String moviecode) {
+		model.addAttribute("code", moviecode);
 		return "/actorInsert";
 	}
 	@PostMapping("/actorInsert")

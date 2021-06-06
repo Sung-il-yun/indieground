@@ -3,7 +3,7 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<div>
+<div style="background-color:rgba(255,255,255, 0.4);">
 
 <h2>${review.rvtittle}</h2>
 영화제목 : ${review.movienm} <br>

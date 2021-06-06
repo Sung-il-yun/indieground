@@ -25,7 +25,7 @@
 					<table style="cellpadding: 0; cellspacing: 0; margin: 0 auto; width: 100%">
 						<tr>
 							<td style="text-align: left">
-								<p><strong>아이디를 입력해주세요.</strong>&nbsp;&nbsp;&nbsp;<span id="idCheck"></span></p>
+								<p><span id="idCheck"></span></p>
 							</td>
 						</tr>
 						<tr>
@@ -33,11 +33,11 @@
 								class="form-control tooltipstered" maxlength="10"
 								required="required" aria-required="true"
 								style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
-								placeholder="최대 10자"></td>
+								placeholder="아이디"></td>
 						</tr>
 						<tr>
 							<td style="text-align: left">
-								<p><strong>비밀번호를 입력해주세요.</strong>&nbsp;&nbsp;&nbsp;<span id="pwCheck"></span></p>
+								<p><span id="pwCheck"></span></p>
 							</td>
 						</tr>
 						<tr>
@@ -45,7 +45,7 @@
 								name="userPw" class="form-control tooltipstered" 
 								maxlength="20" required="required" aria-required="true"
 								style="ime-mode: inactive; margin-bottom: 25px; height: 40px; border: 1px solid #d9d9de"
-								placeholder="최소 8자"></td>
+								placeholder="비밀번호"></td>
 						</tr>
 						<tr>
 							<td style="width: 100%; text-align: center; colspan: 2;"><input
@@ -309,12 +309,12 @@
 			//비밀번호 확인란 유효성 검증
 			else if($("#password").val() != $("#password_check").val()) {
 				$("#password_check").css("background-color", "pink");
-				$("#pwChk2").html('<b style="font-size:14px; color:red;">[위에랑 똑같이!]</b>');
+				$("#pwChk2").html('<b style="font-size:14px; color:red;">[비밀번호가 일치하지 않습니다.]</b>');
 				chk3 = false;
 			}
 			else {
 				$("#password_check").css("background-color", "aqua");
-				$("#pwChk2").html('<b style="font-size:14px; color:green;">[참 잘했어요!]</b>');
+				$("#pwChk2").html('<b style="font-size:14px; color:green;">[비밀번호 사용 가능]</b>');
 				chk3 = true;
 			}
 			
@@ -331,12 +331,12 @@
 			//이름값 유효성 검사 
 			else if(!getName.test($("#user_name").val())) {
 				$("#user_name").css("background-color", "pink");
-				$("#nameChk").html('<b style="font-size:14px; color:red;">[이름은 한글로~!]</b>');
+				$("#nameChk").html('<b style="font-size:14px; color:red;">[이름은 한글만 가능합니다.]</b>');
 				chk4 = false;
 			}
 			else {
 				$("#user_name").css("background-color", "aqua");
-				$("#nameChk").html('<b style="font-size:14px; color:green;">[참 잘했어요!]</b>');
+				$("#nameChk").html('<b style="font-size:14px; color:green;">[이름 사용이 가능합니다.]</b>');
 				chk4 = true;
 			}
 			
@@ -409,19 +409,22 @@
 		$('#signInId').on('keyup', function() {
 			if($("#signInId").val() === "") {
 				$("#signInId").css("background-color", "pink");
-				$("#idCheck").html('<b style="font-size:14px; color:red;">[아이디는 필수 정보에요!]</b>');
+				$("#idCheck").html('<b style="font-size:14px; color:red;">[아이디를 입력하지 않았습니다.]</b>');
 				chk1 = false;
 			}
+			
+			/*
 			//아이디 유효성 검사
 			else if(!getIdCheck.test($("#signInId").val())) {
 				$("#signInId").css("background-color", "pink");
 				$("#idCheck").html('<b style="font-size:14px; color:red;">[영문자, 숫자 4-14자로 작성!!]</b>');
 				chk1 = false;
-			} else {
-				$("#signInId").css("background-color", "aqua");
-				$("#idCheck").html('<b style="font-size:14px; color:green;">[id 입력 완료!]</b>');
+			} */else {
+				$("#signInId").css("background-color", "white");
+				$("#idCheck").html('');
 				chk1 = true;
 			}
+			
 
 		}); //ID 입력값 검증 끝.
 		
@@ -431,17 +434,17 @@
 			//비밀번호 공백 확인
 			if($("#signInPw").val() === ""){
 			    $('#signInPw').css("background-color", "pink");
-				$('#pwCheck').html('<b style="font-size:14px;color:red;">[패스워드는 필수!]</b>');
+				$('#pwCheck').html('<b style="font-size:14px;color:red;">[패스워드를 입력하지 않았습니다.]</b>');
 				chk2 = false;
-			}		         
+			}	/*	         
 			//비밀번호 유효성검사
 			else if(!getPwCheck.test($("#signInPw").val()) || $("#signInPw").val().length < 8){
 			    $('#signInPw').css("background-color", "pink");
 				$('#pwCheck').html('<b style="font-size:14px;color:red;">[특수문자 포함 8자이상]</b>');
 				chk2 = false;
-			} else {
-				$('#signInPw').css("background-color", "aqua");
-				$('#pwCheck').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+			} */else {
+				$('#signInPw').css("background-color", "white");
+				$('#pwCheck').html('');
 				chk2 = true;
 			}	
 		}); //패스워드 검증 끝.
@@ -479,13 +482,13 @@
 						console.log("result: " + data);
 						if(data === "idFail") {
 							$("#signInId").css("background-color", "pink");
-							$("#idCheck").html('<b style="font-size:14px; color:red;">[회원 가입 먼저 하세요!]</b>');
+							$("#idCheck").html('<b style="font-size:14px; color:red;">[등록되지 않은 아이디입니다.]</b>');
 							$("#signInPw").val("");
 							$('#signInId').focus(); //커서를 이동시키고, 스크롤도 해당 위치로 이동시키는 메서드.
 							chk2 = false;
 						} else if(data === "pwFail") {
 							$("#signInPw").css("background-color", "pink");
-							$("#pwCheck").html('<b style="font-size:14px; color:red;">[비밀번호가 틀렸습니다!]</b>');
+							$("#pwCheck").html('<b style="font-size:14px; color:red;">[비밀번호가 틀렸습니다.]</b>');
 							$('#signInPw').val("");
 							$('#signInPw').focus();
 							chk2 = false;

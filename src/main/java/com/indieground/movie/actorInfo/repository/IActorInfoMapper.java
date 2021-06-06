@@ -7,4 +7,5 @@ import com.indieground.movie.actorInfo.model.ActorInfoVO;
 public interface IActorInfoMapper {
 	void insert(ActorInfoVO vo);
 	List<ActorInfoVO> getList();
+	List<ActorInfoVO> search(String keyword);
 }

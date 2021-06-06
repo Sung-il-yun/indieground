@@ -27,4 +27,10 @@
 		SELECT * FROM actorinfo 
 	</select>
 
+	<select id="search" resultMap="ActorInfoMap">
+		SELECT * FROM actorinfo 
+		where actor like '%'||#{keyword}||'%' or 
+		profile like '%'||#{keyword}||'%' 
+	</select>
+
 </mapper>

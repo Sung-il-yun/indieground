@@ -6,23 +6,40 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<c:if test="${login != null }">
-<a href="/movie/review/insert">리뷰작성으로 이동</a> <br>
-</c:if>
 
+    
+    
+    <table style="margin-left: 50px; width:95%; margin-right: 50px; background-color:rgba(255,255,255, 0.4);">
+    
+   <th>
+    <c:if test="${login != null }">
+	<a href="/movie/review/insert">리뷰작성으로 이동</a> <br>
+	</c:if>
+   </th>
+	
 	<c:forEach var = "movieReview" items="${reviewList}">
-			<img src="">
-			<a href=<c:url value='/review/detail?sn=${movieReview.sn}'/>>${movieReview.rvtittle}</a>
-			"${movieReview.rvcontent}" <br>
-			<!-- 무비인포와 같은 영화 포스터를 불러오기 해야한다. -->
-			그러려면 모델에서 무비인포를 받아와야 한다. <br>
-			
+			<tr>
+			<td  style=" padding: 30px 40px;"> 
 			<c:forEach var="movie" items="${movielist}">
-				<c:if test="${movie.moviecode == movieReview.moviecode}">
-				<img src = ${movie.movieposter} width="400" height="600">
-				</c:if>
+			<c:if test="${movie.moviecode == movieReview.moviecode}">
+				<img src = ${movie.movieposter} width="200" height="300">
+			</c:if>
 			</c:forEach>
+			<br>
 			
+			</td>
+			<td>
+			
+				<a style = "color: black;" href=<c:url value='/review/detail?sn=${movieReview.sn}'/>>${movieReview.rvtittle}</a> <br>
+				${movieReview.rvcontent }
+			
+			</td>
+			</tr>
     </c:forEach>
+    
+    </table>
+    
+    
+    
 
 <jsp:include page="../include/footer.jsp" />

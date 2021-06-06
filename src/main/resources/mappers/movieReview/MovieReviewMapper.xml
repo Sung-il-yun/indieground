@@ -55,5 +55,14 @@
 		DELETE moviereview WHERE sn=#{sn}
 	</delete>
 	
+	<select id="search" resultMap="MovieReviewMap">
+		SELECT * FROM moviereview 
+		where movienm like '%'||#{keyword}||'%' or 
+		rvsubtittle like '%'||#{keyword}||'%' or 
+		rvtittle like '%'||#{keyword}||'%' or 
+		rvcontent like '%'||#{keyword}||'%'
+		ORDER BY updtdt DESC 
+	</select>
+	
 	
 </mapper>
