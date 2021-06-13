@@ -13,8 +13,9 @@
 		<p>
 			<div id="imgurl"></div>
 			
+			
 			배우이름: <input name="actor"> <br>
-			영화코드: <input name="moviecode" value="${code}"> <br>
+			영화코드: ${code} <br>
 			배우약력: <input name="profile"> <br>
 			사진: <input id="image" name="photolink"> <button type = "button" id = "preview">미리보기</button> <br>
 			성별: <input name="genger"> <br>
@@ -27,7 +28,6 @@
 		<p>
 	</form>
 
-	<!-- 배우 등록은 원래 모달과 아작스로 해야 한다. -->
 
 	<script>
 	const result = "${msg}";

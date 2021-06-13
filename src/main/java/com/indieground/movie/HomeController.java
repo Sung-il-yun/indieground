@@ -57,11 +57,10 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest req, String carousel) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		model.addAttribute("movieList", service.getList());
+		model.addAttribute("movieList", service.test());
 		model.addAttribute("previewList", prvService.getList());
 		model.addAttribute("mainPage", "1");
 		
-		//별도로 옵션을 추가하여 어떤 파라미터를 넣었는지 전달한다.
 		if(carousel == null)
 			carousel = "genre";
 		

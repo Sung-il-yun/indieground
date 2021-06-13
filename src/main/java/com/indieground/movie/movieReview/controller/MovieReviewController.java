@@ -20,12 +20,11 @@ public class MovieReviewController {
 	
 	@Autowired
 	private MovieInfoService movieservice;
-	//페이징 안함.
 	
 	@GetMapping("review")
 	public String movieReview(Model model) {
 		model.addAttribute("reviewList", service.getList());
-		model.addAttribute("movielist", movieservice.getList());
+		model.addAttribute("movielist", movieservice.test());
 		return "/review/list";
 	}
 	

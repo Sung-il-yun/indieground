@@ -8,9 +8,7 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<!-- VO를 불러와 보여주는 역할 -->
-<!-- 댓글 작성을 지원할 것 -->
-<!-- 즉 초기 댓글 db도 불러와야 함 -->
+
 <div style= "background-color:rgba(255,255,255, 0.4);">
 <h4>${movie.movienm}</h4> <br>
 <img src = ${movie.movieposter} height="600" width="400"> <br>
@@ -19,8 +17,6 @@
 감독: ${movie.director } <br>
 출연진: ${movie.casting} <br>
 장르: ${movie.genre }<br>
-출연진(이건 따로 출연진을 불러옴. 모달창에 띄운다. 어차피 무비코드로 찾는 거라 상관없다.)
-출연진을 띄우는 방법을 생각해 봤는데 대단히 비효율적이지만 컨트롤러에서 모델로 영화정보와 액터정보를 동시에 처리하는 것이 적당하다.
 
 <h2>감독</h2>
 
@@ -42,9 +38,6 @@
 
 <a href= "<c:url value='/modify?moviecode=${movie.moviecode }' />">수정</a>
 </div>
-
-<!-- div 댓글 -->
-<!-- 아작스 통신후 이걸 전부 지워버린 후 새로 공간을 만든다. -->
 
 
 <script>
@@ -70,7 +63,7 @@ function replydelete(sn) {
 		
 			
 			for(i=0; i < result.length; i++) {
-				if(result[i]['moviecode'] == ${movie.moviecode}) { //무비코드가 같은 경우만 출력. 오류 해결
+				if(result[i]['moviecode'] == ${movie.moviecode}) { //무비코드가 같은 경우만 출력
 				toPrint += (new Date(result[i]['updtdt'] + 32400000)).toISOString().replace(/T/, ' ').replace(/\..+/, '');
 				toPrint += "<br>";
 				toPrint += result[i]['userid'];
@@ -191,7 +184,7 @@ function replydelete(sn) {
 			
 				
 				for(i=0; i < result.length; i++) {
-					if(result[i]['moviecode'] == ${movie.moviecode}) { //무비코드가 같은 경우만 출력. 오류 해결
+					if(result[i]['moviecode'] == ${movie.moviecode}) { //무비코드가 같은 경우만 출력
 					toPrint += (new Date(result[i]['updtdt'] + 32400000)).toISOString().replace(/T/, ' ').replace(/\..+/, '');
 					toPrint += "<br>";
 					toPrint += result[i]['userid'];

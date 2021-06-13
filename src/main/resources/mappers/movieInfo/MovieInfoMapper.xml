@@ -32,12 +32,27 @@
 		SELECT * FROM movieinfo ORDER BY sn ASC
 	</select>
 	
+	<!-- 페이징 코드 퍼옴 -->
 	<select id="getList" resultMap="MovieInfoMap">
-		SELECT * FROM movieinfo ORDER BY relsedate DESC 
+		SELECT * FROM
+		(
+			SELECT ROWNUM as rn, tbl.* FROM
+			(
+				SELECT * FROM movieinfo
+				ORDER BY sn ASC
+			) tbl
+		) <![CDATA[
+		WHERE rn > (#{page} - 1) * #{countPerPage} 
+		AND rn <= #{page} * #{countPerPage}]]>
 	</select>
 	
 	<select id="getItem" resultMap="MovieInfoMap">
 		SELECT * FROM movieinfo WHERE moviecode = #{moviecode} ORDER BY sn ASC
+	</select>
+	
+	<!-- 페이징을 하기 위한 게시물 수 세는 코드 -->
+	<select id="countItems" resultType="int">
+		SELECT COUNT(*) FROM movieinfo
 	</select>
 	
 	<!-- default 값이 없기 때문에 sysdate를 직접 입력한다. -->

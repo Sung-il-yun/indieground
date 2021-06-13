@@ -6,8 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="include/header.jsp" />
-회원정보 테이블 출력.
-회원정보 테이블에서 차단여부만 체크가능하게 <br>
+
 
 	<c:forEach var = "member" items="${membersList}">
 			<a href=<c:url value='/members/modify?userid=${member.userid}'/>>${member.usernm} <br></a>

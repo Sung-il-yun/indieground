@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="../include/header.jsp" />
-무비입력창에 미리 값을 써놓은 것을 보여준다.
+
 
 	<form method="post">
 		<p>

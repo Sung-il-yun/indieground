@@ -17,6 +17,17 @@ public class PageCreator {
 	//한 화면에 보여질 페이지 버튼 개수
 	private final int displayPageNum = 10;
 	
+	
+	//PageVO 용
+	public String makeURIPageVO(int page) {
+		UriComponents ucp = UriComponentsBuilder.newInstance().queryParam("page", page)
+																  .queryParam("countPerPage", paging.getCountPerPage())
+																  .build();
+		return ucp.toUriString();
+	}
+	
+	
+	
 	//URI 파라미터를 쉽게 만들어주는 유틸 메서드 선언.
 	public String makeURI(int page) {
 		UriComponents ucp = UriComponentsBuilder.newInstance().queryParam("page", page)

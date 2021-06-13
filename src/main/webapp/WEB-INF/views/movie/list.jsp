@@ -32,6 +32,34 @@
 			</tr>
     </c:forEach>
     
+
+    
     </table>
+    
+    <ul class="pagination justify-content-center">
+					<c:if test="${pc.prev}">
+                       	<li class="page-item">
+							<a class="page-link" href="<c:url value='/board/list?page=${pc.beginPage-1}&countPerPage=${pc.paging.countPerPage}' />" 
+							style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #ffffff; opacity: 0.8">이전</a>
+						</li>
+					</c:if>
+					
+					<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
+						<li class="page-item">
+						   <a href="<c:url value='/list${pc.makeURIPageVO(pageNum)}'/>" class="page-link ${(pc.paging.page == pageNum) ? 'page-active': ''}" style="margin-top: 0; height: 40px; color: black; border: 1px solid #ffffff;">${pageNum}</a>
+						</li>
+					</c:forEach>
+					
+					<!-- 다음 -->
+					<c:if test="${pc.next}">
+					    <li class="page-item">
+					      <a class="page-link" href="<c:url value='/board/list?page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>" 
+					      style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #ffffff; opacity: 0.8">다음</a>
+					    </li>
+					</c:if>
+				    </ul>
+					<!-- 페이징 처리 끝 -->
+    
+ 
 
 <jsp:include page="../include/footer.jsp" />

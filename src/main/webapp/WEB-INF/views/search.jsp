@@ -7,7 +7,7 @@
 
 <jsp:include page="include/header.jsp" />
 
-<!-- 각각의 리스트를 모두 불러와 뿌린다. -->
+<!-- 각각의 리스트를 모두 불러온다. -->
 
 <div style= "background-color:rgba(255,255,255, 0.4);">
 
@@ -47,7 +47,6 @@
 </div>
 
 <h2>댓글 검색결과</h2>
-댓글(영화명 + 댓글내용)
 <div>
 
 	<c:forEach var = "reply" items="${replySearch}">
